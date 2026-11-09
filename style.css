@@ -1,3 +1,13 @@
+/* —— L'Oréal brand colors —— */
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --gold: #c5a46d; /* elegant L'Oréal-style gold accent */
+  --gold-dark: #a8874f;
+  --soft: #f7f4ee; /* warm off-white for the chat background */
+  --gray: #666666;
+}
+
 /* —— basic reset —— */
 * {
   box-sizing: border-box;
@@ -8,7 +18,8 @@
 /* —— body + fonts —— */
 body {
   font-family: "Montserrat", Arial, Helvetica, sans-serif;
-  color: #333;
+  color: #222;
+  background: var(--white);
   display: flex;
   justify-content: center;
 }
@@ -21,43 +32,126 @@ body {
 /* header */
 .site-header {
   text-align: center;
-  padding-top: 50px;
+  padding: 50px 0 24px;
+  border-bottom: 2px solid var(--gold);
+}
+
+.brand-logo {
+  width: 240px;
+  max-width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto 18px;
 }
 
 .site-title {
   font-size: 22px;
   font-weight: 500;
-  margin-bottom: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.site-tagline {
+  font-size: 14px;
+  font-weight: 300;
+  color: var(--gray);
+  letter-spacing: 1px;
+}
+
+/* chat section */
+.chatbox {
+  margin: 32px 0;
+}
+
+/* LevelUp: latest question banner above the response */
+.latest-question {
+  background: var(--black);
+  color: var(--white);
+  border-left: 4px solid var(--gold);
+  padding: 14px 18px;
+  margin-bottom: 12px;
+}
+
+.latest-label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.latest-question p {
+  font-size: 16px;
+  line-height: 1.4;
 }
 
 /* chat window */
-.chatbox {
-  margin: 40px 0;
-}
-
 .chat-window {
-  height: 360px;
-  border: 1px solid #000;
+  height: 420px;
+  border: 1px solid var(--black);
   padding: 20px;
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.5;
   overflow-y: auto;
-  background: #fafafa;
-  white-space: pre-line;
+  background: var(--soft);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-/* messages */
+/* messages (LevelUp: chat bubbles) */
 .msg {
-  margin-bottom: 14px;
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 18px;
   line-height: 1.5;
+  white-space: pre-line; /* keeps line breaks from the AI reply */
+  word-wrap: break-word;
 }
 
+/* user messages: black bubble on the right */
 .msg.user {
-  color: #000;
+  align-self: flex-end;
+  background: var(--black);
+  color: var(--white);
+  border-bottom-right-radius: 4px;
 }
 
+/* assistant messages: white bubble with gold border on the left */
 .msg.ai {
-  color: #666666;
+  align-self: flex-start;
+  background: var(--white);
+  color: #222;
+  border: 1px solid var(--gold);
+  border-bottom-left-radius: 4px;
+}
+
+/* small label above each bubble */
+.msg .sender {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.msg.user .sender {
+  color: var(--gold);
+}
+
+.msg.ai .sender {
+  color: var(--gold-dark);
+}
+
+/* "thinking…" placeholder */
+.msg.loading {
+  font-style: italic;
+  color: var(--gray);
 }
 
 /* input row */
@@ -71,18 +165,19 @@ body {
   flex: 1;
   padding: 12px;
   border: 1px solid #ccc;
-  font-size: 18px;
+  font-size: 16px;
+  font-family: inherit;
 }
 
 .chat-form input:focus {
-  outline: 2px solid #000;
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 
 .chat-form button {
   font-size: 18px;
-  background: #000;
-  color: #fff;
+  background: var(--black);
+  color: var(--white);
   border: none;
   padding: 12px;
   width: 48px;
@@ -99,11 +194,16 @@ body {
 }
 
 .chat-form button:hover {
-  background: #666666;
+  background: var(--gold);
+}
+
+.chat-form button:disabled {
+  background: var(--gray);
+  cursor: wait;
 }
 
 .chat-form button:focus {
-  outline: 2px solid #000;
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 
@@ -125,7 +225,9 @@ body {
   margin: 60px 0 40px;
   text-align: center;
   font-size: 14px;
-  color: #666;
+  color: var(--gray);
+  border-top: 1px solid var(--gold);
+  padding-top: 24px;
 }
 
 .site-footer nav {
@@ -134,10 +236,20 @@ body {
 
 .site-footer a {
   margin: 0 8px;
-  color: #000;
+  color: var(--black);
   text-decoration: none;
 }
 
 .site-footer a:hover {
-  color: #666666;
+  color: var(--gold-dark);
+}
+
+/* small screens */
+@media (max-width: 600px) {
+  .msg {
+    max-width: 92%;
+  }
+  .chat-window {
+    height: 360px;
+  }
 }

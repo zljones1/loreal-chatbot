@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Chat Assistant</title>
+    <title>L'Oréal Smart Product Advisor</title>
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
@@ -12,6 +12,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap"
       rel="stylesheet"
     />
+    <link rel="icon" href="img/loreal-logo.png" />
     <link rel="stylesheet" href="style.css" />
   </head>
 
@@ -19,13 +20,28 @@
     <div class="page-wrapper">
       <!------- Header / Branding ------->
       <header class="site-header">
+        <img
+          src="img/loreal-logo.png"
+          alt="L'Oréal logo"
+          class="brand-logo"
+        />
         <h1 class="site-title">Smart Product Advisor</h1>
+        <p class="site-tagline">
+          Your personal guide to L'Oréal makeup, skincare, haircare &amp;
+          fragrance
+        </p>
       </header>
 
       <!------- Chat Area ------->
       <main>
         <section class="chatbox">
-          <div id="chatWindow" class="chat-window">
+          <!-- LevelUp: the user's latest question is shown here, above the reply -->
+          <div id="latestQuestion" class="latest-question" aria-live="polite">
+            <span class="latest-label">Your question</span>
+            <p id="latestQuestionText">Ask me anything about L'Oréal products.</p>
+          </div>
+
+          <div id="chatWindow" class="chat-window" aria-live="polite">
             <!-- messages will be appended here via JS -->
           </div>
 
@@ -49,7 +65,7 @@
 
       <!------- Footer Links ------->
       <footer class="site-footer">
-        <p>&copy; 2025 Company Name. All rights reserved.</p>
+        <p>&copy; 2026 L'Oréal. All rights reserved.</p>
         <nav>
           <!-- These URLs are placeholders -->
           <a href="#">Privacy Policy</a>
