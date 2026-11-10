@@ -9,7 +9,7 @@
    After you deploy your Worker (see WORKER_SETUP.md), copy its URL
    (it looks like https://loreal-chatbot.your-name.workers.dev/)
    and replace the placeholder text below. */
-const WORKER_URL = "PASTE_YOUR_CLOUDFLARE_WORKER_URL_HERE";
+const WORKER_URL = "https://loreal-chatbot.zljones1.workers.dev/";
 
 /* DOM elements */
 const chatForm = document.getElementById("chatForm");
