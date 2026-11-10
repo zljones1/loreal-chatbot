@@ -3,7 +3,7 @@
   --black: #000000;
   --white: #ffffff;
   --gold: #c5a46d; /* elegant L'Oréal-style gold accent */
-  --gold-dark: #a8874f;
+  --gold-dark: #8a6a35; /* darker gold for small text on white (5:1 contrast) */
   --soft: #f7f4ee; /* warm off-white for the chat background */
   --gray: #666666;
 }
@@ -97,6 +97,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   overflow-y: auto;
+  position: relative; /* lets script.js scroll to the top of a new message */
   background: var(--soft);
   display: flex;
   flex-direction: column;
@@ -110,7 +111,7 @@ body {
   border-radius: 18px;
   line-height: 1.5;
   white-space: pre-line; /* keeps line breaks from the AI reply */
-  word-wrap: break-word;
+  overflow-wrap: anywhere; /* long words or links won't overflow on phones */
 }
 
 /* user messages: black bubble on the right */
@@ -193,8 +194,9 @@ body {
   font-size: 24px;
 }
 
-.chat-form button:hover {
+.chat-form button:hover:not(:disabled) {
   background: var(--gold);
+  color: var(--black); /* black icon on gold keeps strong contrast */
 }
 
 .chat-form button:disabled {

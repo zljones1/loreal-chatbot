@@ -36,12 +36,19 @@
       <main>
         <section class="chatbox">
           <!-- LevelUp: the user's latest question is shown here, above the reply -->
-          <div id="latestQuestion" class="latest-question" aria-live="polite">
+          <div id="latestQuestion" class="latest-question">
             <span class="latest-label">Your question</span>
             <p id="latestQuestionText">Ask me anything about L'Oréal products.</p>
           </div>
 
-          <div id="chatWindow" class="chat-window" aria-live="polite">
+          <div
+            id="chatWindow"
+            class="chat-window"
+            role="log"
+            aria-live="polite"
+            aria-label="Conversation"
+            tabindex="0"
+          >
             <!-- messages will be appended here via JS -->
           </div>
 
@@ -53,10 +60,11 @@
               type="text"
               placeholder="Ask me about products or routines…"
               autocomplete="off"
+              maxlength="500"
               required
             />
             <button type="submit" id="sendBtn">
-              <span class="material-icons">send</span>
+              <span class="material-icons" aria-hidden="true">send</span>
               <span class="visually-hidden">Send</span>
             </button>
           </form>
